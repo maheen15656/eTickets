@@ -1,9 +1,11 @@
 ﻿using eTickets.Data.Enum;
+using eTickets.Data.Static;
 using eTickets.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace eTickets.Data
 {
-    public class AppDbIntializer
+    public class AppDbInitializer
     {
         public static void seed(IApplicationBuilder applicationBuilder)
         {
@@ -18,32 +20,32 @@ namespace eTickets.Data
                         new Cinema()
                         {
                             Name = "Cinema 1",
-                            logo = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
-                            description = "This is the description of the first cinema"
+                            Logo = "http://dotnethow.net/images/cinemas/cinema-1.jpeg",
+                            Description = "This is the description of the first cinema"
                         },
                         new Cinema()
                         {
                             Name = "Cinema 2",
-                            logo = "http://dotnethow.net/images/cinemas/cinema-2.jpeg",
-                            description = "This is the description of the first cinema"
+                            Logo = "http://dotnethow.net/images/cinemas/cinema-2.jpeg",
+                            Description = "This is the description of the first cinema"
                         },
                         new Cinema()
                         {
                             Name = "Cinema 3",
-                            logo = "http://dotnethow.net/images/cinemas/cinema-3.jpeg",
-                            description = "This is the description of the first cinema"
+                            Logo = "http://dotnethow.net/images/cinemas/cinema-3.jpeg",
+                            Description = "This is the description of the first cinema"
                         },
                         new Cinema()
                         {
                             Name = "Cinema 4",
-                            logo = "http://dotnethow.net/images/cinemas/cinema-4.jpeg",
-                            description = "This is the description of the first cinema"
+                            Logo = "http://dotnethow.net/images/cinemas/cinema-4.jpeg",
+                            Description = "This is the description of the first cinema"
                         },
                         new Cinema()
                         {
                             Name = "Cinema 5",
-                            logo = "http://dotnethow.net/images/cinemas/cinema-5.jpeg",
-                            description = "This is the description of the first cinema"
+                            Logo = "http://dotnethow.net/images/cinemas/cinema-5.jpeg",
+                            Description = "This is the description of the first cinema"
                         },
                     });
                     context.SaveChanges();
@@ -88,9 +90,9 @@ namespace eTickets.Data
                     context.SaveChanges();
                 }
                 //Producers
-                if (!context.producers.Any())
+                if (!context.Producers.Any())
                 {
-                    context.producers.AddRange(new List<Producer>()
+                    context.Producers.AddRange(new List<Producer>()
                     {
                         new Producer()
                         {
@@ -137,11 +139,11 @@ namespace eTickets.Data
                             Description = "This is the Life movie description",
                             Price = 39.50,
                             ImageURL = "http://dotnethow.net/images/movies/movie-3.jpeg",
-                            Startdate = DateTime.Now.AddDays(-10),
+                            StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(10),
-                            CinemaID = 3,
-                            ProducerID = 3,
-                            movieCategory = MovieCategory.Documentory
+                            CinemaId = 3,
+                            ProducerId = 3,
+                            MovieCategory = MovieCategory.Documentory
                         },
                         new Movie()
                         {
@@ -149,11 +151,11 @@ namespace eTickets.Data
                             Description = "This is the Shawshank Redemption description",
                             Price = 29.50,
                             ImageURL = "http://dotnethow.net/images/movies/movie-1.jpeg",
-                            Startdate = DateTime.Now,
+                            StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddDays(3),
-                            CinemaID = 1,
-                            ProducerID = 1,
-                            movieCategory = MovieCategory.Action
+                            CinemaId = 1,
+                            ProducerId = 1,
+                            MovieCategory = MovieCategory.Action
                         },
                         new Movie()
                         {
@@ -161,11 +163,11 @@ namespace eTickets.Data
                             Description = "This is the Ghost movie description",
                             Price = 39.50,
                             ImageURL = "http://dotnethow.net/images/movies/movie-4.jpeg",
-                            Startdate = DateTime.Now,
+                            StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddDays(7),
-                            CinemaID = 4,
-                            ProducerID = 4,
-                            movieCategory = MovieCategory.Horror
+                            CinemaId = 4,
+                            ProducerId = 4,
+                            MovieCategory = MovieCategory.Horror
                         },
                         new Movie()
                         {
@@ -173,11 +175,11 @@ namespace eTickets.Data
                             Description = "This is the Race movie description",
                             Price = 39.50,
                             ImageURL = "http://dotnethow.net/images/movies/movie-6.jpeg",
-                            Startdate = DateTime.Now.AddDays(-10),
+                            StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(-5),
-                            CinemaID = 1,
-                            ProducerID = 2,
-                            movieCategory = MovieCategory.Documentory
+                            CinemaId = 1,
+                            ProducerId = 2,
+                            MovieCategory = MovieCategory.Documentory
                         },
                         new Movie()
                         {
@@ -185,11 +187,11 @@ namespace eTickets.Data
                             Description = "This is the Scoob movie description",
                             Price = 39.50,
                             ImageURL = "http://dotnethow.net/images/movies/movie-7.jpeg",
-                            Startdate = DateTime.Now.AddDays(-10),
+                            StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(-2),
-                            CinemaID = 1,
-                            ProducerID = 3,
-                            movieCategory = MovieCategory.Cartoon
+                            CinemaId = 1,
+                            ProducerId = 3,
+                            MovieCategory = MovieCategory.Cartoon
                         },
                         new Movie()
                         {
@@ -197,11 +199,11 @@ namespace eTickets.Data
                             Description = "This is the Cold Soles movie description",
                             Price = 39.50,
                             ImageURL = "http://dotnethow.net/images/movies/movie-8.jpeg",
-                            Startdate = DateTime.Now.AddDays(3),
+                            StartDate = DateTime.Now.AddDays(3),
                             EndDate = DateTime.Now.AddDays(20),
-                            CinemaID = 1,
-                            ProducerID = 5,
-                            movieCategory = MovieCategory.Drama
+                            CinemaId = 1,
+                            ProducerId = 5,
+                            MovieCategory = MovieCategory.Drama
                         }
                     });
                     context.SaveChanges();
@@ -311,5 +313,56 @@ namespace eTickets.Data
 
 
         }
+        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+
+                //Roles
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+                if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+
+                //Users
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                string adminUserEmail = "admin@etickets.com";
+
+                var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+                if (adminUser == null)
+                {
+                    var newAdminUser = new ApplicationUser()
+                    {
+                        FullName = "Admin User",
+                        UserName = "admin-user",
+                        Email = adminUserEmail,
+                        EmailConfirmed = true
+                    };
+                    await userManager.CreateAsync(newAdminUser, "Coding@1234?");
+                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                }
+
+
+                string appUserEmail = "user@etickets.com";
+
+                var appUser = await userManager.FindByEmailAsync(appUserEmail);
+                if (appUser == null)
+                {
+                    var newAppUser = new ApplicationUser()
+                    {
+                        FullName = "Application User",
+                        UserName = "app-user",
+                        Email = appUserEmail,
+                        EmailConfirmed = true
+                    };
+                    await userManager.CreateAsync(newAppUser, "Coding@1234?");
+                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+                }
+            }
+        }
     }
 }
+    
+

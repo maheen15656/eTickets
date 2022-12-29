@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<Movie>
+
 @{
     ViewData["Title"] = "List of Movies";
 }
+
 <div class="row">
     @foreach (var item in Model)
     {
@@ -28,12 +30,12 @@
                         <div class="card-body">
                             <p class="card-text">@item.Description</p>
                             <p class="card-text"><b>Cinema: </b>@item.Cinema.Name</p>
-                            <p class="card-text"><b>Category: </b>@item.movieCategory</p>
-                            <p class="card-text"><b>Start Date: </b>@item.Startdate.ToString("dd MMM yy")</p>
+                            <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
+                            <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
                             <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>
                             <p class="card-text ">
                                 <b>Status: </b>
-                                @if (DateTime.Now >= item.Startdate && DateTime.Now <= item.EndDate)
+                                @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
                                 {
                                     <span class="badge bg-success text-white">AVAILABLE</span>
                                 }
@@ -46,6 +48,7 @@
                                     <span class="badge bg-primary text-white">UPCOMING</span>
                                 }
                             </p>
+
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -54,7 +57,6 @@
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
                                     <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
-                                <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))</a>
                                 <a class="btn btn-success text-white @((DateTime.Now > item.EndDate) ? "disabled" : "")" 
                                    asp-controller="Orders" 
                                    asp-action="AddItemToShoppingCart" 
@@ -68,4 +70,5 @@
         </div>
     }
 </div>
-@*@await Html.PartialAsync("_CreateItem", "Movies") *@
+
+@await Html.PartialAsync("_CreateItem", "Movies") 

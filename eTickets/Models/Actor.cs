@@ -1,22 +1,27 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using eTickets.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace eTickets.Models
 {
-    public class Actor
+    public class Actor : IEntityBase
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        [Display(Name = "Profile Picture URL")]
+        [Display(Name = "Profile Picture")]
+        [Required(ErrorMessage = "Profile Picture is required")]
         public string ProfilePictureURL { get; set; }
 
         [Display(Name = "Full Name")]
+        [Required(ErrorMessage = "Full Name is required")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Full Name must be between 3 and 50 chars")]
         public string FullName { get; set; }
-        [Display(Name = "Bio")]
+
+        [Display(Name = "Biography")]
+        [Required(ErrorMessage = "Biography is required")]
         public string Bio { get; set; }
 
-        //Relationship
+        //Relationships
         public List<Actors_Movies> Actors_Movies { get; set; }
-
     }
 }
