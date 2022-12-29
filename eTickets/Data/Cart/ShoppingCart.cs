@@ -14,7 +14,7 @@ namespace eTickets.Data.Cart
         public AppDbContext _context { get; set; }
 
         public string ShoppingCartId { get; set; }
-        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public List<ShoppingCartItems> ShoppingCartItems { get; set; }
 
         public ShoppingCart(AppDbContext context)
         {
@@ -23,7 +23,7 @@ namespace eTickets.Data.Cart
 
         public static ShoppingCart GetShoppingCart(IServiceProvider services)
         {
-            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            ISession? session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             var context = services.GetService<AppDbContext>();
 
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
@@ -38,7 +38,7 @@ namespace eTickets.Data.Cart
 
             if (shoppingCartItem == null)
             {
-                shoppingCartItem = new ShoppingCartItem()
+                shoppingCartItem = new ShoppingCartItems()
                 {
                     ShoppingCartId = ShoppingCartId,
                     Movie = movie,
@@ -72,7 +72,7 @@ namespace eTickets.Data.Cart
             _context.SaveChanges();
         }
 
-        public List<ShoppingCartItem> GetShoppingCartItems()
+        public List<ShoppingCartItems> GetShoppingCartItems()
         {
             return ShoppingCartItems ?? (ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Include(n => n.Movie).ToList());
         }

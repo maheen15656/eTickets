@@ -27,7 +27,7 @@ namespace eTickets.Data.Services
             return orders;
         }
 
-        public async Task StoreOrderAsync(List<ShoppingCartItem> items, string userId, string userEmailAddress)
+        public async Task StoreOrderAsync(List<ShoppingCartItems> items, string userId, string userEmailAddress)
         {
             var order = new Order()
             {
